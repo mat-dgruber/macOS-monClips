@@ -9,10 +9,15 @@ import Foundation
 import SwiftData
 
 @Model
-final class Item {
-    var timestamp: Date
-    
-    init(timestamp: Date) {
-        self.timestamp = timestamp
-    }
-}
+  final class ClipItem {
+      @Attribute(.unique) var text: String
+      var timestamp: Date
+      var isPinned: Bool // ADICIONE ESTA LINHA
+                                                                                
+      // E ATUALIZE O INIT PARA:
+      init(text: String, timestamp: Date = Date(), isPinned: Bool = false) {
+          self.text = text
+          self.timestamp = timestamp
+          self.isPinned = isPinned
+      }
+  }
